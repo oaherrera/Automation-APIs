@@ -1,0 +1,12 @@
+{
+  "name": "Project AI Copilot",
+  "version": "1.0.0",
+  "description": "Serenity BDD Automation with Screenplay Pattern",
+  "keywords": ["serenity-bdd", "screenplay", "cucumber", "api-testing", "automation"],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/project-ai-copilot"
+  }
+}

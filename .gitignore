@@ -1,0 +1,17 @@
+.DS_Store
+target/
+*.iml
+.idea/
+*.class
+*.jar
+*.log
+node_modules/
+dist/
+build/
+coverage/
+.env
+.env.local
+*.swp
+*.swo
+*~
+.vscode/
