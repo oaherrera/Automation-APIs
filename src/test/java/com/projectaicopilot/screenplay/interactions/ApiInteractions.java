@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.rest.interactions.Get;
 import net.serenitybdd.screenplay.rest.interactions.Post;
 import net.serenitybdd.screenplay.rest.interactions.Put;
 import net.serenitybdd.screenplay.rest.interactions.Delete;
-import io.restassured.http.ContentType;
+import io.restassured.http.ContentType; 
 
 public class ApiInteractions {
 

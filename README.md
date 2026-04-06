@@ -27,7 +27,9 @@ projectAICopilot/
 │   │   │   ├── tasks/                           # Tareas del patrón Screenplay
 │   │   │   │   ├── ObtenerPublicaciones.java
 │   │   │   │   ├── ObtenerPublicacionPorId.java
-│   │   │   │   └── CrearPublicacion.java
+│   │   │   │   ├── CrearPublicacion.java
+│   │   │   │   ├── ObtenerUsuarioPorId.java
+│   │   │   │   └── EliminarUsuario.java
 │   │   │   ├── interactions/                    # Interacciones con APIs
 │   │   │   │   └── ApiInteractions.java
 │   │   │   ├── questions/                       # Validaciones y preguntas
@@ -52,11 +54,11 @@ projectAICopilot/
 │       └── features/                             # Feature files en español
 │           ├── publicaciones.feature
 │           └── usuarios.feature
-├── .claude/
+├── .github/
+│   ├── copilot-instructions.md                  # Instrucciones para Copilot
 │   ├── skills/                                  # Skills personalizados
-│   │   └── serenity-bdd-test-gen/               # Test generation skill
+│   │   └── test-runner.md
 │   └── agents/                                  # Agentes personalizados
-│       └── test-runner.md                       # Agent para ejecutar tests
 ├── target/                                      # Compilados
 └── README.md                                    # Este archivo
 ```

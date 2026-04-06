@@ -10,6 +10,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.Matchers.*;
 
 import com.projectaicopilot.screenplay.tasks.ObtenerUsuarioPorId;
+import com.projectaicopilot.screenplay.tasks.EliminarUsuario;
 import com.projectaicopilot.screenplay.utils.ApiEndpoints;
 
 public class UsuariosSteps {
@@ -46,6 +47,18 @@ public class UsuariosSteps {
                 seeThat("el email del usuario",
                         actor -> LastResponse.received().answeredBy(actor).path("email"),
                         notNullValue())
+        );
+    }
+
+    @Dado("que el usuario desea eliminar un usuario")
+    public void usuarioDesea_EliminarUsuario() {
+        OnStage.theActorCalled("DeleteUser").can(CallAnApi.at(ApiEndpoints.BASE_URL));
+    }
+
+    @Cuando("elimino el usuario con id {int}")
+    public void elimimoUsuario(Integer userId) {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                EliminarUsuario.conId(userId)
         );
     }
 }

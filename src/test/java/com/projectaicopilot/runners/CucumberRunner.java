@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
     },
     monochrome = false,
     dryRun = false,
-    tags = "@CancelNoveltyCioBeakdownAkt"
+    tags = "@publicaciones or @usuarios"
 )
 public class CucumberRunner {
 }
