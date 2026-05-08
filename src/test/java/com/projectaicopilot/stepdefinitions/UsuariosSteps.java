@@ -11,6 +11,7 @@ import static org.hamcrest.Matchers.*;
 
 import com.projectaicopilot.screenplay.tasks.ObtenerUsuarioPorId;
 import com.projectaicopilot.screenplay.tasks.EliminarUsuario;
+import com.projectaicopilot.screenplay.questions.ValidarEsquemaDeRespuesta;
 import com.projectaicopilot.screenplay.utils.ApiEndpoints;
 
 public class UsuariosSteps {
@@ -60,5 +61,16 @@ public class UsuariosSteps {
         OnStage.theActorInTheSpotlight().attemptsTo(
                 EliminarUsuario.conId(userId)
         );
+    }
+
+    @Dado("que el usuario desea verificar el contrato de un usuario")
+    public void usuarioDesea_VerificarContratoUsuario() {
+        OnStage.theActorCalled("ContratoUserValidator").can(CallAnApi.at(ApiEndpoints.BASE_URL));
+    }
+
+    @Entonces("el contrato de la respuesta debe coincidir con el esquema de usuario")
+    public void validarContratoUsuario() {
+        ValidarEsquemaDeRespuesta.con("schemas/user-schema.json")
+                .answeredBy(OnStage.theActorInTheSpotlight());
     }
 }

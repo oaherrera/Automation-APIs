@@ -38,6 +38,21 @@ public class PublicacionesSteps {
         OnStage.theActorCalled("Usuario4").can(CallAnApi.at(ApiEndpoints.BASE_URL));
     }
 
+    @Dado("que el usuario desea verificar el contrato de publicaciones")
+    public void usuarioDesea_VerificarContratoPublicaciones() {
+        OnStage.theActorCalled("ContratoUser1").can(CallAnApi.at(ApiEndpoints.BASE_URL));
+    }
+
+    @Dado("que el usuario desea verificar el contrato de una publicación")
+    public void usuarioDesea_VerificarContratoPublicacion() {
+        OnStage.theActorCalled("ContratoUser2").can(CallAnApi.at(ApiEndpoints.BASE_URL));
+    }
+
+    @Dado("que el usuario desea verificar el contrato al crear una publicación")
+    public void usuarioDesea_VerificarContratoCrearPublicacion() {
+        OnStage.theActorCalled("ContratoUser3").can(CallAnApi.at(ApiEndpoints.BASE_URL));
+    }
+
     @Cuando("solicito las publicaciones del usuario con id {int}")
     public void solicitoPublicacionesDelUsuario(Integer userId) {
         OnStage.theActorInTheSpotlight().attemptsTo(
@@ -103,5 +118,15 @@ public class PublicacionesSteps {
                 seeThat("el campo title",  actor -> LastResponse.received().answeredBy(actor).path("title"),  notNullValue()),
                 seeThat("el campo body",   actor -> LastResponse.received().answeredBy(actor).path("body"),   notNullValue())
         );
+    }
+
+    @Entonces("el contrato de la respuesta debe coincidir con el esquema de publicación")
+    public void validarContratoPublicacion() {
+        ValidarEsquemaDeRespuesta.con("schemas/post-schema.json").answeredBy(OnStage.theActorInTheSpotlight());
+    }
+
+    @Entonces("el contrato de la respuesta debe coincidir con el esquema de listado de publicaciones")
+    public void validarContratoListadoPublicaciones() {
+        ValidarEsquemaDeRespuesta.con("schemas/posts-list-schema.json").answeredBy(OnStage.theActorInTheSpotlight());
     }
 }

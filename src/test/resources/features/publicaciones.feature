@@ -30,3 +30,23 @@ Característica: Gestión de Publicaciones
     Dado que el usuario desea validar la estructura
     Cuando solicito la publicación con id 1
     Entonces la respuesta debe tener los campos: id, userId, title, body
+
+  @publicaciones @contrato
+  Escenario: Validar contrato de listado de publicaciones
+    Dado que el usuario desea verificar el contrato de publicaciones
+    Cuando solicito las publicaciones del usuario con id 1
+    Entonces el contrato de la respuesta debe coincidir con el esquema de listado de publicaciones
+
+  @publicaciones @contrato
+  Escenario: Validar contrato de publicación por id
+    Dado que el usuario desea verificar el contrato de una publicación
+    Cuando solicito la publicación con id 1
+    Entonces el contrato de la respuesta debe coincidir con el esquema de publicación
+
+  @publicaciones @contrato
+  Escenario: Validar contrato de publicación creada
+    Dado que el usuario desea verificar el contrato al crear una publicación
+    Cuando creo una publicación con los siguientes datos:
+      | userId | title           | body         |
+      | 1      | Mi primer post  | Contenido... |
+    Entonces el contrato de la respuesta debe coincidir con el esquema de publicación

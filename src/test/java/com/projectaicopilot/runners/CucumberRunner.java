@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
     },
     monochrome = false,
     dryRun = false,
-    tags = "@publicaciones or @usuarios"
+    tags = "@publicaciones or @usuarios or @contrato"
 )
 public class CucumberRunner {
 }

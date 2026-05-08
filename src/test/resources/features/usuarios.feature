@@ -23,3 +23,9 @@ Característica: Gestión de Usuarios
     Dado que el usuario desea eliminar un usuario
     Cuando elimino el usuario con id 1
     Entonces la respuesta del servidor debe tener estado OK
+
+  @usuarios @contrato
+  Escenario: Validar contrato de usuario por id
+    Dado que el usuario desea verificar el contrato de un usuario
+    Cuando solicito la información del usuario con id 1
+    Entonces el contrato de la respuesta debe coincidir con el esquema de usuario
