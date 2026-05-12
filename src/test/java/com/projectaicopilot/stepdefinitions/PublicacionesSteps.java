@@ -129,4 +129,59 @@ public class PublicacionesSteps {
     public void validarContratoListadoPublicaciones() {
         ValidarEsquemaDeRespuesta.con("schemas/posts-list-schema.json").answeredBy(OnStage.theActorInTheSpotlight());
     }
+
+    // --- PUT /posts/{id} ---
+
+    @Dado("que el usuario desea actualizar una publicación")
+    public void usuarioDesea_ActualizarPublicacion() {
+        OnStage.theActorCalled("ActualizarUser").can(CallAnApi.at(ApiEndpoints.BASE_URL));
+    }
+
+    @Dado("que el usuario desea verificar el contrato de una publicación actualizada")
+    public void usuarioDesea_VerificarContratoActualizar() {
+        OnStage.theActorCalled("ContratoActualizar").can(CallAnApi.at(ApiEndpoints.BASE_URL));
+    }
+
+    @Cuando("actualizo la publicación con id {int} con los siguientes datos:")
+    public void actualizoPublicacion(Integer postId, DataTable dataTable) {
+        java.util.Map<String, String> data = dataTable.asMaps().get(0);
+        Post post = new Post(
+                Integer.valueOf(data.get("userId")),
+                data.get("title"),
+                data.get("body")
+        );
+        post.setId(postId);
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                ActualizarPublicacion.conId(postId, post)
+        );
+    }
+
+    @Entonces("el contrato de la respuesta debe coincidir con el esquema de publicación actualizada")
+    public void validarContratoActualizar() {
+        ValidarEsquemaDeRespuesta.con("schemas/post-schema.json").answeredBy(OnStage.theActorInTheSpotlight());
+    }
+
+    // --- DELETE /posts/{id} ---
+
+    @Dado("que el usuario desea eliminar una publicación")
+    public void usuarioDesea_EliminarPublicacion() {
+        OnStage.theActorCalled("EliminarPublicacionUser").can(CallAnApi.at(ApiEndpoints.BASE_URL));
+    }
+
+    @Dado("que el usuario desea verificar el contrato de una publicación eliminada")
+    public void usuarioDesea_VerificarContratoEliminar() {
+        OnStage.theActorCalled("ContratoEliminar").can(CallAnApi.at(ApiEndpoints.BASE_URL));
+    }
+
+    @Cuando("elimino la publicación con id {int}")
+    public void eliminoPublicacion(Integer postId) {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                EliminarPublicacion.conId(postId)
+        );
+    }
+
+    @Entonces("el contrato de la respuesta debe coincidir con el esquema de publicación eliminada")
+    public void validarContratoEliminar() {
+        ValidarEsquemaDeRespuesta.con("schemas/delete-response-schema.json").answeredBy(OnStage.theActorInTheSpotlight());
+    }
 }

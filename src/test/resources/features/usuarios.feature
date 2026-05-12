@@ -29,3 +29,19 @@ Característica: Gestión de Usuarios
     Dado que el usuario desea verificar el contrato de un usuario
     Cuando solicito la información del usuario con id 1
     Entonces el contrato de la respuesta debe coincidir con el esquema de usuario
+
+  @usuarios @actualizar-usuario
+  Escenario: Actualizar un usuario
+    Dado que el usuario desea actualizar un usuario
+    Cuando actualizo el usuario con id 1 con los siguientes datos:
+      | name            | username   | email              |
+      | Juan Actualizado | juan123    | juan@nuevo.com     |
+    Entonces la respuesta del servidor debe tener estado OK
+
+  @usuarios @contrato
+  Escenario: Validar contrato de usuario actualizado
+    Dado que el usuario desea verificar el contrato de un usuario actualizado
+    Cuando actualizo el usuario con id 1 con los siguientes datos:
+      | name            | username   | email              |
+      | Juan Actualizado | juan123    | juan@nuevo.com     |
+    Entonces el contrato de la respuesta debe coincidir con el esquema de usuario actualizado

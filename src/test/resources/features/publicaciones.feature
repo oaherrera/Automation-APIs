@@ -50,3 +50,31 @@ Característica: Gestión de Publicaciones
       | userId | title           | body         |
       | 1      | Mi primer post  | Contenido... |
     Entonces el contrato de la respuesta debe coincidir con el esquema de publicación
+
+  @publicaciones @actualizar
+  Escenario: Actualizar una publicación
+    Dado que el usuario desea actualizar una publicación
+    Cuando actualizo la publicación con id 1 con los siguientes datos:
+      | userId | title              | body              |
+      | 1      | Título actualizado  | Contenido act...  |
+    Entonces la respuesta del servidor debe tener estado OK
+
+  @publicaciones @contrato
+  Escenario: Validar contrato de publicación actualizada
+    Dado que el usuario desea verificar el contrato de una publicación actualizada
+    Cuando actualizo la publicación con id 1 con los siguientes datos:
+      | userId | title              | body              |
+      | 1      | Título actualizado  | Contenido act...  |
+    Entonces el contrato de la respuesta debe coincidir con el esquema de publicación actualizada
+
+  @publicaciones @eliminar
+  Escenario: Eliminar una publicación
+    Dado que el usuario desea eliminar una publicación
+    Cuando elimino la publicación con id 1
+    Entonces la respuesta del servidor debe tener estado OK
+
+  @publicaciones @contrato
+  Escenario: Validar contrato de publicación eliminada
+    Dado que el usuario desea verificar el contrato de una publicación eliminada
+    Cuando elimino la publicación con id 1
+    Entonces el contrato de la respuesta debe coincidir con el esquema de publicación eliminada
