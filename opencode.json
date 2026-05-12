@@ -3,19 +3,13 @@
   "mcp": {
     "postman": {
       "type": "local",
-      "command": ["npx", "-y", "@postman/postman-mcp-server", "--minimal"],
-      "enabled": true,
-      "environment": {
-        "POSTMAN_API_KEY": "${env:POSTMAN_API_KEY}"
-      }
+      "command": ["/Users/oscar.arbey.herrera/.opencode/mcp-helpers/postman-mcp"],
+      "enabled": true
     },
     "github": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
-      "enabled": true,
-      "environment": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${env:GITHUB_TOKEN}"
-      }
+      "command": ["/Users/oscar.arbey.herrera/.opencode/mcp-helpers/github-mcp"],
+      "enabled": true
     }
   }
 }
